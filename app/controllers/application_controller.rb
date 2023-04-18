@@ -33,26 +33,37 @@ class ApplicationController < Sinatra::Base
   end
 
 
-  get "/login" do
+  post "/login" do
     email = params[:email]
     password = params[:password]
  
      user = User.find_by(email: email)
       if user && user.password == password
-        # session[:user_id] = user.id
-        redirect '/profile'
+         session[:authenticated] = true 
+        return{message: "successfully logged in!"}.to_json
       else
         status 401 # Unauthorized
       { error: 'Invalid email or password' }.to_json
     end
    end
-  end
-   get '/ratings' do
-    request.body.rewind
+  
+
+    get "/profile" do
+      if session[:authenticated] = true 
+       erb :profile
+         else
+          redirect'/login'
+        end
+      end
+
+   post '/ratings' do
+      request.body.rewind
       data = JSON.parse(request.body.read)
       value = data['value']
-      label = data['feedback']
-      db.execute("INSERT INTO feedbacks (feedback, rating_value) VALUES (?, ?)", label, value)
+      label = data['label']
+      db.execute("INSERT INTO feedbacks (feedback, value) VALUES (?, ?)", label, value)
       content_type :json
-        { message: 'Rating submitted successfully' }.to_json
+      { message: 'Rating submitted successfully' }.to_json
       end
+    end
+  
