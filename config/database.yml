@@ -1,5 +1,6 @@
 default: &default
   adapter: sqlite3
+  encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
@@ -12,5 +13,8 @@ test:
   database: db/test.sqlite3
 
 production:
-  adapter: postgresql
+  <<: *default
   url: <%= ENV['DATABASE_URL'] %>
+  database: zenlife_db
+  username: zenlife_db_user
+  password: <%= ENV['TZBFzemu5rLAfbbo1WbhLuku8oIscG7I'] %>
