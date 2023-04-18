@@ -61,7 +61,9 @@ class ApplicationController < Sinatra::Base
       data = JSON.parse(request.body.read)
       value = data['value']
       label = data['label']
-      db.execute("INSERT INTO feedbacks (feedback, value) VALUES (?, ?)", label, value)
+      
+      feedback = Feedback.new(label: label, value: value)
+      feedback.save
       content_type :json
       { message: 'Rating submitted successfully' }.to_json
       end
