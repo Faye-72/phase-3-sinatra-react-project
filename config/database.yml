@@ -1,5 +1,5 @@
 default: &default
-  adapter: sqlite3
+  adapter: postgres
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
@@ -13,4 +13,7 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  url: <%= ENV['DATABASE_URL'] %>
+  database: zenlife_db
+  username: zenlife_db_user
+  password: <%= ENV['DATABASE_PASSWORD'] %>
