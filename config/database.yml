@@ -17,3 +17,5 @@ production:
   database: zenlife_db
   username: zenlife_db_user
   password: <%= ENV['DATABASE_PASSWORD'] %>
+  host: dpg-cgvfpfodh87i4q2vs950-a
+  port: 5432
