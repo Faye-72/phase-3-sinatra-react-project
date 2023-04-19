@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 2023_04_18_155929) do
   create_table "doctors", force: :cascade do |t|
     t.string "staff_id"
     t.string "role"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
