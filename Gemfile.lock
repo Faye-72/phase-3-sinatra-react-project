@@ -89,7 +89,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  activerecord (~> 6.1)
+  activerecord (~> 6.0)
   database_cleaner (~> 2.0)
   pry (~> 0.14.1)
   rack-contrib (~> 2.3)
