@@ -14,7 +14,7 @@ test:
 
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
-  database: zenlife_db
-  username: zenlife_db_user
-  password: <%= ENV['TZBFzemu5rLAfbbo1WbhLuku8oIscG7I'] %>
+  url: postgresql://postgres:df1YcjJ7J0rSu2Z0JwWu@containers-us-west-43.railway.app:6342/railway
+  database: railway
+  username: postgres
+  password: df1YcjJ7J0rSu2Z0JwWu
